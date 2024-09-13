@@ -9,6 +9,7 @@ import { AzureSecretManager } from './azure/azure-secret-manager.js';
 import { IAzureSecretManagerConfigs } from './azure/azure-secret-manager-configs.js';
 import { IGcpSecretManagerConfigs } from './gcp/gcp-secret-manager-configs.js';
 import { GcpSecretManager } from './gcp/gcp-secret-manager.js';
+import { MongoDbSecretManager } from './mongodb/mongodb-secret-manager.js';
 
 /**
  * Class to get secret manager
@@ -62,6 +63,8 @@ export class SecretManager {
         return new GcpSecretManager(configs as IGcpSecretManagerConfigs)
       case SecretManagerType.AZURE:
         return new AzureSecretManager(configs as IAzureSecretManagerConfigs)
+      case SecretManagerType.MONGODB:
+        return new MongoDbSecretManager()
       case SecretManagerType.OLD_STYLE:
         return new OldSecretManager()
       default:

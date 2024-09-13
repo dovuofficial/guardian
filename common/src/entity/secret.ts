@@ -5,17 +5,17 @@ import { BaseEntity } from '../models/index.js';
  * Secrets collection
  */
 @Entity()
-@Unique({ properties: ['key'], options: { partialFilterExpression: { key: { $type: 'string' }}}})
+@Unique({ properties: ['path'], options: { partialFilterExpression: { path: { $type: 'string' }}}})
 export class Secret extends BaseEntity {
     /**
      * Secret name
      */
     @Property({ nullable: true })
-    key?: string;
+    path?: string;
 
     /**
      * Secret value
      */
     @Property({ nullable: true })
-    value?: string;
+    data?: string;
 }

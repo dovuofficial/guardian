@@ -25,6 +25,10 @@ export enum SecretManagerType {
    */
   AZURE = 'azure',
   /**
+   * MongoDB Secrets Manager
+   */
+  MONGODB = 'mongodb',
+  /**
    * Old style secrets
    */
   OLD_STYLE = 'oldstyle'
@@ -52,6 +56,8 @@ export class SecretManagerConfigs {
         return GcpSecretManagerConfigs.getConfigs()
       case SecretManagerType.AZURE:
         return AzureSecretManagerConfigs.getConfigs()
+      case SecretManagerType.MONGODB:
+        return
       case SecretManagerType.OLD_STYLE:
         return
       default:
