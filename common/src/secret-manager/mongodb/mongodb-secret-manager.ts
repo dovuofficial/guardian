@@ -52,11 +52,12 @@ export class MongoDbSecretManager implements SecretManagerBase {
         }
         console.log(`MONGODB-SECRETS: Completed setting secret ${path}`);
 
+        // TEMP: Verify encrypt/decrypt symetry
+        if ("Y" === process.env.VERIFY_SECRETS)
         {
-            // TEST: Verification
             const verify = await this.getSecrets(path);
             if (JSON.stringify(verify) !== JSON.stringify(data)) {
-                console.log('Secrets verification failed');
+                console.log(`MONGODB-SECRETS: VERIFICATION FAILED secret ${path}`);
                 console.log('Original:', data);
                 console.log('Returned:', verify);
                 throw new Error('Secrets verification failed');
